@@ -1,0 +1,46 @@
+## Why set port to a param?
+@port=3000
+
+## setting base url?
+@host=http://localhost:{{port}}
+
+### GET /
+GET {{host}}/
+
+# expected response
+Hello employees!
+
+### GET /employees
+GET {{host}}/employees
+
+## expected response
+[
+  { id: 1, name: "Carolynn McGinlay" },
+  { id: 2, name: "Lodovico Filon" },
+  { id: 3, name: "Jefferey Wahlberg" },
+  { id: 4, name: "Kayley Tures" },
+  { id: 5, name: "Rickard Carver" },
+  { id: 6, name: "Michael Stryde" },
+  { id: 7, name: "Averell Santino" },
+  { id: 8, name: "Constantina Connue" },
+  { id: 9, name: "Verile Bondesen" },
+  { id: 10, name: "Gwen Grollmann" },
+]
+
+### GET /employees/:id
+GET {{host}}/employees/4
+
+## expected response
+{
+    "id": 4,
+    "name": "Kayley Tures"
+}
+
+### GET /employees/:id
+GET {{host}}/employees/12
+
+## expected response
+Employee not found in directory
+
+### GET /employees/random
+GET {{host}}/employees/random
